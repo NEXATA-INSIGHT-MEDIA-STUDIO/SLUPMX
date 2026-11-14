@@ -1,0 +1,72 @@
+.nuvary-rss-section {
+  background: var(--soft, #f5f7fa);
+}
+
+.nuvary-rss-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 22px;
+}
+
+.nuvary-rss-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 245px;
+  padding: 25px;
+  background: var(--white, #fff);
+  border: 1px solid var(--line, #e5eaf0);
+  border-radius: var(--radius, 18px);
+  box-shadow: var(--shadow, 0 14px 40px rgba(16,36,58,.09));
+}
+
+.nuvary-rss-meta {
+  margin: 0 0 12px;
+  color: var(--orange-dark, #dc7414);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.nuvary-rss-card h3 {
+  margin: 0 0 12px;
+  color: var(--navy, #10243a);
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
+.nuvary-rss-card p {
+  margin: 0 0 20px;
+  color: var(--muted, #697789);
+  line-height: 1.65;
+}
+
+.nuvary-rss-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 11px 17px;
+  border-radius: 999px;
+  background: var(--navy, #10243a);
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.nuvary-rss-link:hover {
+  background: var(--orange-dark, #dc7414);
+  transform: translateY(-2px);
+}
+
+.rss-status {
+  grid-column: 1 / -1;
+  color: var(--muted, #697789);
+}
+
+@media (max-width: 600px) {
+  .nuvary-rss-card { padding: 21px; }
+}
