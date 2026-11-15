@@ -67,6 +67,29 @@
   color: var(--muted, #697789);
 }
 
+
+/* Imágenes de publicaciones externas de NEXATA */
+.nuvary-rss-image {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  object-position: center;
+  background: #f5f7fa;
+  border-radius: 12px;
+}
+
+/* Tarjetas de publicaciones */
+.nuvary-rss-card {
+  overflow: hidden;
+  min-width: 0;
+}
+
+.nuvary-rss-content {
+  padding: 16px;
+}
+
+
 @media (max-width: 600px) {
   .nuvary-rss-card { padding: 21px; }
 }
