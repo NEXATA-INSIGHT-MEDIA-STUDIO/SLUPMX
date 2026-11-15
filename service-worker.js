@@ -1,5 +1,5 @@
 
-const CACHE_VERSION = "slupmx-v2";
+const CACHE_VERSION = "slupmx-v3";
 
 const CORE = [
   "./",
@@ -11,8 +11,7 @@ const CORE = [
   "./js/plataformas.js?v=1.0.0",
   "./js/publicaciones.js?v=1.0.0",
   "./js/app.js?v=1.0.0",
-  "./js/feed.global.js?v=1.0.0",
-  "./data/nexata-products.json"
+  "./js/feed.global.js?v=1.0.0"
 ];
 
 self.addEventListener("install", event => {
@@ -39,14 +38,24 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
   const request = event.request;
+  const url = new URL(request.url);
 
   if (
     request.method !== "GET" ||
-    new URL(request.url).origin !== self.location.origin
+    url.origin !== self.location.origin
   ) {
     return;
   }
 
+  // El JSON de NEXATA siempre se consulta directamente al servidor.
+  if (url.pathname.endsWith("/data/nexata-products.json")) {
+    event.respondWith(
+      fetch(request, { cache: "no-store" })
+    );
+    return;
+  }
+
+  // Los demás recursos utilizan caché con actualización de red.
   event.respondWith(
     fetch(request)
       .then(response => {
